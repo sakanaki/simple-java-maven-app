@@ -3,10 +3,8 @@ pipeline {
     stages {
         stage('Build') {
             agent {
-                docker {
-                    image 'maven:3-alpine'
-                    args '-v /root/.m2:/root/.m2'
-                }
+                // 在這裡定義代理類型
+                // 如果要在 Docker 容器中運行，可以省略此部分
             }
             steps {
                 sh 'mvn -B -DskipTests clean package'
