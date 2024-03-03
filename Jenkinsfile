@@ -1,9 +1,13 @@
 pipeline {
-    agent any // 或者是 label 'my-label' 或 none，根據你的需要修改
+    agent any
+    options {
+        // Timeout counter starts AFTER agent is allocated
+        timeout(time: 1, unit: 'SECONDS')
+    }
     stages {
-        stage('Build') {
+        stage('Example') {
             steps {
-                sh 'mvn -B -DskipTests clean package'
+                echo 'Hello World'
             }
         }
     }
